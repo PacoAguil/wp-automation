@@ -14,7 +14,7 @@ extract_node_exporter:
   archive.extracted:
     - name: /root/node_exporter-1.8.1.linux-amd64
     - source: /root/node_exporter-1.8.1.linux-amd64.tar.gz  
-    - unless: ls /root | grep node_exporter
+    - unless: ls /root/node_exporter-1.8.1.linux-amd64/ | grep node_exporter
 
 move_node_exporter:
   file.managed:
