@@ -81,4 +81,4 @@ chmodf_wp:
 copy_wp_config:
   file.managed:
     - name: /var/www/wordpress/wp-config.php
-    - source: salt://files/wp-config.php
+    - source: salt://wp-automation/files/wp-config.php

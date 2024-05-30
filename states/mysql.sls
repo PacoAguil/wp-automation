@@ -39,6 +39,7 @@ create_wp_database:
 create_wp_user:
   cmd.run:
     - name: mysql -u root -e "CREATE USER 'wpuser'@'192.168.18.152' IDENTIFIED BY 'MyStrongPassword';"
+    - unless: mysql -u root -e "SELECT EXISTS(SELECT 1 FROM mysql.user WHERE user = 'wpuser' AND host = '192.168.18.152')"
     - require:
       - cmd: create_wp_database
 
