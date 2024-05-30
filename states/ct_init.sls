@@ -14,9 +14,14 @@ ct_mysql_init:
         --storage local-lvm \
         --rootfs local-lvm:2 \
         --memory 1024 \
-        --swap 0 \
-        --nesting
+        --swap 0 
     - unless: pct list |grep 101
+
+set_nesting_mysql:
+  cmd.run:
+    - name: pct set 101 -features nesting=1
+    - require:
+      - cmd: ct_mysql_init
 
 ct_wp_init:
   cmd.run:
@@ -28,9 +33,14 @@ ct_wp_init:
         --storage local-lvm \
         --rootfs local-lvm:10 \
         --memory 2048 \
-        --swap 0 \
-        --nesting
+        --swap 0 
     - unless: pct list |grep 102
+
+set_nesting_wp:
+  cmd.run:
+    - name: pct set 102 -features nesting=1
+    - require:
+      - cmd: ct_wp_init
 
 ct_apache_init:
   cmd.run:
@@ -42,9 +52,14 @@ ct_apache_init:
         --storage local-lvm \
         --rootfs local-lvm:10 \
         --memory 2048 \
-        --swap 0 \
-        --nesting
+        --swap 0 
     - unless: pct list |grep 103
+
+set_nesting_apache:
+  cmd.run:
+    - name: pct set 103 -features nesting=1
+    - require:
+      - cmd: ct_apache_init
 
 ct_prometheus_init:
   cmd.run:
@@ -56,7 +71,11 @@ ct_prometheus_init:
         --storage local-lvm \
         --rootfs local-lvm:10 \
         --memory 2048 \
-        --swap 0 \
-        --nesting
+        --swap 0 
     - unless: pct list |grep 104
-    
+
+set_nesting_prometheus:
+  cmd.run:
+    - name: pct set 104 -features nesting=1
+    - require:
+      - cmd: ct_prometheus_init    

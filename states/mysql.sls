@@ -8,7 +8,7 @@ install-mariadb:
 configure_mariadb:
   file.managed:
     - name: /etc/mysql/my.cnf
-    - source: salt://files/my.cnf
+    - source: salt://wp-automation/files/my.cnf
     - user: root
     - group: root
     - mode: 644

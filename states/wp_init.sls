@@ -10,7 +10,7 @@ install_packages:
 apache_config:
   file.managed:
     - name: /etc/apache2/sites-available/wp.conf
-    - source: salt://files/wp-endpoint.conf
+    - source: salt://wp-automation/files/wp-endpoint.conf
     - user: root
     - group: root
     - mode: 644
@@ -20,7 +20,7 @@ apache_config:
 index_config:
   file.managed:
     - name: /etc/apache2/mods-available/dir.conf
-    - source: salt://files/dirmod.conf
+    - source: salt://wp-automation/files/dirmod.conf
     - user: root
     - group: root
     - mode: 644
