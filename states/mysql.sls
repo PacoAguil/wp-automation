@@ -38,8 +38,7 @@ create_wp_database:
 
 create_wp_user:
   cmd.run:
-    - name: mysql -u root -e "CREATE USER 'wpuser'@'192.168.18.152' IDENTIFIED BY 'MyStrongPassword';"
-    - unless: mysql -u root -e "SELECT EXISTS(SELECT 1 FROM mysql.user WHERE user = 'wpuser' AND host = '192.168.18.152')"
+    - name: mysql -u root -e "CREATE USER IF NOT EXISTS 'wpuser'@'192.168.18.152' IDENTIFIED BY 'MyStrongPassword';"
     - require:
       - cmd: create_wp_database
 
@@ -50,3 +49,7 @@ grant_wp_user:
 flush_priv:
   cmd.run:
     - name: mysql -u root -e "FLUSH PRIVILEGES;"
+
+restart_mariadb:
+  cmd.run:
+    - name: systemctl restart mariadb
