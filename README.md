@@ -1,0 +1,1 @@
+Repositorio para la automatización de una instalación de wordpress usando salt
