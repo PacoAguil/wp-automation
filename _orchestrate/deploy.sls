@@ -23,7 +23,7 @@ execute_wp_init:
     - tgt: 'wp'
     - sls: wp-automation.states.wp_init
 
-#execute_state_minion3:
-#  salt.state:
-#    - tgt: 'minion3'
-#    - sls: my_state_minion3
+execute_state_prometheus:
+  salt.state:
+    - tgt: 'prometheus'
+    - sls: wp-automation.states.prometheus
