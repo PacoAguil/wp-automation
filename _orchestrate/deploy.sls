@@ -1,3 +1,13 @@
+#ping_pve_tfg:
+#  salt.state:
+#    - tgt: 'pve_tfg'
+#    - sls: wp-automation.states.ping
+#
+#ping_mysql:
+#  salt.state:
+#    - tgt: 'mysql'
+#    - sls: wp-automation.states.ping
+#
 execute_mysql:
   salt.state:
     - tgt: 'mysql'
